@@ -1,4 +1,4 @@
-/* NetHack 3.6	uhitm.c	$NHDT-Date: 1573764936 2019/11/14 20:55:36 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.215 $ */
+/* NetHack 3.6  uhitm.c $NHDT-Date: 1573764936 2019/11/14 20:55:36 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.215 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2012. */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -216,6 +216,19 @@ struct obj *wep; /* uwep for attack(), null for kick_monster() */
             override_confirmation = TRUE;
             return FALSE;
         }
+        if (canspotmon(mtmp)) {
+            char qbuf[QBUFSZ];
+
+            Sprintf(qbuf, "Really attack %s?", mon_nam(mtmp));
+            if (!paranoid_query(ParanoidHit, qbuf)) {
+                context.move = 0;
+                return TRUE;
+            }
+        }
+    /* Paranoia against floating eyes without protection */
+    }else if (flags.confirm && mtmp->data == &mons[PM_FLOATING_EYE]
+                && !Blind && !Free_action && !ureflects("", "")
+                && !Confusion && !Hallucination && !Stunned){
         if (canspotmon(mtmp)) {
             char qbuf[QBUFSZ];
 
