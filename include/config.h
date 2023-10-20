@@ -1,4 +1,4 @@
-/* NetHack 3.6	config.h	$NHDT-Date: 1575245033 2019/12/02 00:03:53 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.126 $ */
+/* NetHack 3.6  config.h    $NHDT-Date: 1575245033 2019/12/02 00:03:53 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.126 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2016. */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -196,7 +196,7 @@
 #define WIZARD_NAME "wizard" /* value is ignored if SYSCF is enabled */
 #endif
 
-#ifndef SYSCF
+#ifdef SYSCF
 #define SYSCF                /* use a global configuration */
 #define SYSCF_FILE "sysconf" /* global configuration is in a file */
 #endif
