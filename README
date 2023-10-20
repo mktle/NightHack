@@ -1,5 +1,9 @@
 Built off NetHack 3.6.7
 
+Can by compiled by following the instructions at https://nethackwiki.com/wiki/Compiling
+
+Implemented:
+    - ask for confirmation before hitting floating eyes without protection
+
 To-Do:
-    - require confirmation for hitting floating eyes without protection
     - automatic price ID
