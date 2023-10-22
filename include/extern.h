@@ -1,5 +1,5 @@
-/* NetHack 3.6	extern.h	$NHDT-Date: 1573940539 2019/11/16 21:42:19 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.741 $ */
-/* Copyright (c) Steve Creps, 1988.				  */
+/* NetHack 3.6  extern.h    $NHDT-Date: 1573940539 2019/11/16 21:42:19 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.741 $ */
+/* Copyright (c) Steve Creps, 1988.               */
 /* NetHack may be freely redistributed.  See license for details. */
 
 #ifndef EXTERN_H
@@ -719,6 +719,7 @@ E void FDECL(container_contents, (struct obj *, BOOLEAN_P,
                                   BOOLEAN_P, BOOLEAN_P));
 E void FDECL(nh_terminate, (int)) NORETURN;
 E int NDECL(dovanquished);
+E int NDECL(dogenocided);
 E int NDECL(num_genocides);
 E void FDECL(delayed_killer, (int, int, const char *));
 E struct kinfo *FDECL(find_delayed_killer, (int));

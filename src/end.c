@@ -1,10 +1,11 @@
-/* NetHack 3.6	end.c	$NHDT-Date: 1575245059 2019/12/02 00:04:19 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.181 $ */
+/* NetHack 3.6  end.c   $NHDT-Date: 1575245059 2019/12/02 00:04:19 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.181 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2012. */
 /* NetHack may be freely redistributed.  See license for details. */
 
 #define NEED_VARARGS /* comment line for pre-compiled headers */
 
+#include <assert.h>
 #include "hack.h"
 #include "lev.h"
 #ifndef NO_SIGNAL
@@ -1884,6 +1885,39 @@ dovanquished()
 /* high priests aren't unique but are flagged as such to simplify something */
 #define UniqCritterIndx(mndx) ((mons[mndx].geno & G_UNIQ) \
                                && mndx != PM_HIGH_PRIEST)
+
+/* #genocided command */
+int
+dogenocided()
+{
+    register int i;
+    char buf[BUFSZ];
+    winid klwin;
+    int ngenocided = num_genocides();
+
+    if (ngenocided== 0){
+        pline("No species have been genocided.");
+    }else{
+        klwin = create_nhwindow(NHW_MENU);
+        putstr(klwin, 0, "Genocided species:");
+        putstr(klwin, 0, "");
+
+        for (i = LOW_PM; i < NUMMONS; i++) {
+            if (mvitals[i].mvflags & G_GONE) {
+                Sprintf(buf, " %s", makeplural(mons[i].mname));
+                putstr(klwin, 0, buf);
+            }
+        }
+        putstr(klwin, 0, "");
+        Sprintf(buf, "%d species genocided.", ngenocided);
+        putstr(klwin, 0, buf);
+
+        display_nhwindow(klwin, TRUE);
+        destroy_nhwindow(klwin);
+    }
+    return 0;
+}
+
 
 STATIC_OVL void
 list_vanquished(defquery, ask)
