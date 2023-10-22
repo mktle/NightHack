@@ -1,4 +1,4 @@
-/* NetHack 3.6	cmd.c	$NHDT-Date: 1575245052 2019/12/02 00:04:12 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.350 $ */
+/* NetHack 3.6  cmd.c   $NHDT-Date: 1575245052 2019/12/02 00:04:12 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.350 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2013. */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -127,6 +127,7 @@ extern int NDECL(dowield);            /**/
 extern int NDECL(dowieldquiver);      /**/
 extern int NDECL(dozap);              /**/
 extern int NDECL(doorganize);         /**/
+extern int NDECL(dogenocided);        /**/
 #endif /* DUMB */
 
 static int NDECL((*timed_occ_fn));
@@ -3385,6 +3386,8 @@ struct ext_func_tab extcmdlist[] = {
             enter_explore_mode, IFBURIED },
     { 'f', "fire", "fire ammunition from quiver", dofire },
     { M('f'), "force", "force a lock", doforce, AUTOCOMPLETE },
+    { M('g'), "genocided", "lists genocided species", 
+            dogenocided, IFBURIED | AUTOCOMPLETE},
     { ';', "glance", "show what type of thing a map symbol corresponds to",
             doquickwhatis, IFBURIED | GENERALCMD },
     { '?', "help", "give a help message", dohelp, IFBURIED | GENERALCMD },

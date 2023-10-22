@@ -5,6 +5,7 @@
 
 #define NEED_VARARGS /* comment line for pre-compiled headers */
 
+#include <assert.h>
 #include "hack.h"
 #include "lev.h"
 #ifndef NO_SIGNAL
@@ -1890,30 +1891,31 @@ int
 dogenocided()
 {
     register int i;
-    int ngenocided;
-    char c;
     char buf[BUFSZ];
+    winid klwin;
+    int ngenocided = num_genocides();
 
-    winid klwin = create_nhwindow(NHW_MENU);
-    Sprintf(buf, "Genocided species:");
-    putstr(klwin, 0, buf);
-    putstr(klwin, 0, "");
+    if (ngenocided== 0){
+        pline("No species have been genocided.");
+    }else{
+        klwin = create_nhwindow(NHW_MENU);
+        putstr(klwin, 0, "Genocided species:");
+        putstr(klwin, 0, "");
 
-    for (i = LOW_PM; i < NUMMONS; i++) {
-        /* uniques can't be genocided but can become extinct;
-           however, they're never reported as extinct, so skip them */
-        if (UniqCritterIndx(i))
-            continue;
-        if (mvitals[i].mvflags & G_GONE) {
-            Sprintf(buf, " %s", makeplural(mons[i].mname));
-            putstr(klwin, 0, buf);
+        for (i = LOW_PM; i < NUMMONS; i++) {
+            if (mvitals[i].mvflags & G_GONE) {
+                Sprintf(buf, " %s", makeplural(mons[i].mname));
+                putstr(klwin, 0, buf);
+            }
         }
-    }
-    putstr(klwin, 0, "");
-    if (ngenocided > 0) {
+        putstr(klwin, 0, "");
         Sprintf(buf, "%d species genocided.", ngenocided);
         putstr(klwin, 0, buf);
+
+        display_nhwindow(klwin, TRUE);
+        destroy_nhwindow(klwin);
     }
+    return 0;
 }
 
 
