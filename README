@@ -3,7 +3,5 @@ Built off NetHack 3.6.7
 Can by compiled by following the instructions at https://nethackwiki.com/wiki/Compiling
 
 Implemented:
-    - ask for confirmation before hitting floating eyes without protection
-
-To-Do:
-    - automatic price ID
+    - asks for confirmation before hitting floating eyes without protection
+    - #genocided command generates a list of genocided species
