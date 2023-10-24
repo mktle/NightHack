@@ -1,7 +1,8 @@
-Built off NetHack 3.6.7
+Built off NetHack 3.6.7 with the goal of reducing frustration while keeping gameplay largely untouched. It can be compiled by following the instructions at https://nethackwiki.com/wiki/Compiling.
 
-Can by compiled by following the instructions at https://nethackwiki.com/wiki/Compiling
-
-Implemented:
-    - asks for confirmation before hitting floating eyes without protection
+Implemented changes from vanilla:
+    - paranoia for hitting floating eyes without protection
     - #genocided command generates a list of genocided species
+
+Upcoming changes:
+    - paranoia for stepping into lava or pools/moats
