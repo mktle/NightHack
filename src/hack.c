@@ -830,10 +830,10 @@ int mode;
                 return FALSE;
             }
         }
-    } else if (IS_POOL(tmpr->typ) && !Levitation && !Wwalking && !Confusion && !Stunned){
+    } else if (IS_POOL(tmpr->typ) && levl[x][y].seenv && !Levitation && !Wwalking && !Confusion && !Stunned){
         if (yn("Step into the water?") != 'y')
             return FALSE;
-    } else if (IS_LAVA(tmpr->typ) && !Levitation && !Confusion && !Stunned){
+    } else if (IS_LAVA(tmpr->typ) && levl[x][y].seenv && !Levitation && !Confusion && !Stunned){
         if (yn("Step into the lava?") != 'y')
             return FALSE;
     }
