@@ -2,7 +2,5 @@ Built off NetHack 3.6.7 with the goal of reducing frustration while keeping game
 
 Implemented changes from vanilla:
     - paranoia for hitting floating eyes without protection
+    - paranoia for stepping into pools or lava without protection
     - #genocided command generates a list of genocided species
-
-Upcoming changes:
-    - paranoia for stepping into lava or pools/moats
