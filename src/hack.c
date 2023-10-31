@@ -830,7 +830,7 @@ int mode;
                 return FALSE;
             }
         }
-    } else if (IS_POOL(tmpr->type)){
+    } else if (IS_POOL(tmpr->typ) && !Levitation && !Wwalking){
         if (yn("Step into the water?") != 'y')
             return FALSE;
     }
