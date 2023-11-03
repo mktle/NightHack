@@ -717,6 +717,7 @@ int mode;
     int x = ux + dx;
     int y = uy + dy;
     register struct rm *tmpr = &levl[x][y];
+    register struct rm *curr = &levl[ux][uy];
     register struct rm *ust;
 
     context.door_opened = FALSE;
@@ -830,10 +831,12 @@ int mode;
                 return FALSE;
             }
         }
-    } else if (IS_POOL(tmpr->typ) && levl[x][y].seenv && !Levitation && !Wwalking && !Confusion && !Stunned){
+    } else if (IS_POOL(tmpr->typ) && !IS_POOL(curr->typ) && levl[x][y].seenv 
+                && !Levitation && !Wwalking && !Confusion && !Stunned){
         if (yn("Step into the water?") != 'y')
             return FALSE;
-    } else if (IS_LAVA(tmpr->typ) && levl[x][y].seenv && !Levitation && !Confusion && !Stunned){
+    } else if (IS_LAVA(tmpr->typ) && levl[x][y].seenv 
+                && !Levitation && !Confusion && !Stunned){
         if (yn("Step into the lava?") != 'y')
             return FALSE;
     }
