@@ -1,4 +1,4 @@
-For the sleepy and/or speedy NetHack player that is prone to careless mistakes. Built off NetHack 3.6.7 with the goal of reducing frustration while keeping gameplay largely untouched. It can be compiled by following the instructions at https://nethackwiki.com/wiki/Compiling.
+For the sleepy and/or speedy NetHack player who is prone to careless mistakes. Built off NetHack 3.6.7 with the goal of reducing frustration while keeping gameplay largely untouched. It can be compiled by following the instructions at https://nethackwiki.com/wiki/Compiling.
 
 Implemented changes from vanilla:
     - paranoia for hitting floating eyes without protection
@@ -6,4 +6,5 @@ Implemented changes from vanilla:
     - #genocided command generates a list of genocided species
 
 Intended changes:
-    - in-game notepad (separate from level annotations)
+    - in-game notepad (separate from level annotations, for things like tracking intrinsics)
+    - confirmation before stashing an identified wand of cancellation into a bag of holding
